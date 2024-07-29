@@ -16,3 +16,9 @@ echo "Installing from cache"
 echo "---------------------"
 rm -Rf vendor/bower-asset
 composer install
+
+# Testing additional behaviours
+echo
+echo "Testing alternatives (test.php)"
+echo "-------------------------------"
+php test.php
