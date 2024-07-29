@@ -34,7 +34,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
-    # Add PHP 8.1
+    # Add PHP 8.3
     dnf config-manager --set-enabled crb
     dnf install epel-release epel-next-release -y
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-9
@@ -47,14 +47,14 @@ Vagrant.configure('2') do |config|
     # Dependencies
     dnf install wget zip -y
 
-    # PHP 8.1
+    # PHP 8.3
     dnf module reset php
-    dnf install php81 php81-php-pecl-mcrypt php81-php-pecl-zip -y
-    echo "source /opt/remi/php81/enable" > /etc/profile.d/php.sh
+    dnf install php83 php83-php-pecl-mcrypt php83-php-pecl-zip -y
+    echo "source /opt/remi/php83/enable" > /etc/profile.d/php.sh
 
     # Composer
     wget https://getcomposer.org/installer -O composer-installer
-    source /opt/remi/php81/enable
+    source /opt/remi/php83/enable
     php composer-installer --install-dir=/usr/local/bin --filename=composer
     rm composer-installer
   SHELL
